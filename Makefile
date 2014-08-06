@@ -2,7 +2,7 @@
 TAR = test
 CC = gcc -O6 -Wall
 L = -lm
-OBJS = main.o dancinglinks.o
+OBJS = main.o dancinglinks.o algorithmx.o
 SHAD = -fPIC -shared
 LIB = libikax.so
 
@@ -16,3 +16,4 @@ clean:
 
 main.o: main.h dancinglinks.o
 dancinglinks.o: dancinglinks.h
+algorithmx.o: algorithmx.h dancinglinks.o

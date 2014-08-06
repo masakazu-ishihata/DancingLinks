@@ -25,8 +25,6 @@ void dlnode_set(dlnode *_n, int _a, int _b, dlnode *_m);
 void dlnode_remove(dlnode *_n, int _a);
 void dlnode_restore(dlnode *_n, int _a);
 void dlnode_add(dlnode *_n, int _a, int _b, dlnode *_m);
-/* vector -> dl */
-dlnode *dlnode_vector(int _n, int *_v);
 
 /*------------------------------------*/
 /* sparse matrix */

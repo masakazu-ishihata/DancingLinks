@@ -101,8 +101,8 @@ dlmatrix *dlmatrix_new(int _n)
   /* column headers */
   ph = _m->h; /* previous header */
   for(i=0; i<_m->n; i++){
-    ch = dlnode_new(i+1);     /* a new column header */
-    dlnode_add(ph, 0, 1, ch); /* ph <-> ch <-> ph.l[0][1] */
+    ch = dlnode_new(0);        /* a new column header */
+    dlnode_add(ph, 0, 1, ch);  /* ph <-> ch <-> ph.l[0][1] */
     ph = ch;
   }
 
@@ -131,13 +131,12 @@ void dlmatrix_free(dlmatrix *_m)
 /*------------------------------------*/
 void dlmatrix_show(FILE *_fp, dlmatrix *_m)
 {
-  int c;
-  dlnode *ch, *e;
+  int i;
+  dlnode *ch;
 
   /* column header */
-  for(ch=dlnode_get(_m->h,0,1); ch!=_m->h; ch=dlnode_get(ch,0,1)){
-    for(c=0, e=dlnode_get(ch,1,1); e!=ch; e=dlnode_get(e,1,1), c++);
-    printf("%2d:%10d\n", ch->v, c);
+  for(i=0, ch=_m->h; i<_m->n; i++, ch=dlnode_get(ch,0,1)){
+    printf("%2d:%10d\n", i, ch->v);
   }
 }
 /*------------------------------------*/
@@ -157,10 +156,16 @@ int dlmatrix_add(dlmatrix *_m, int *_v)
   for(i=0; i<_m->n; i++){
     /* a new element */
     if(_v[i] > 0){
+      /* create a new element e */
       e = dlnode_new(_v[i]);
       if(pe == NULL) pe = e;
-      dlnode_add(ch, 1, 0, e); /* add to column ch */
-      dlnode_add(pe, 0, 1, e); /* add to line */
+
+      /* add e to column ch */
+      dlnode_add(ch, 1, 0, e);
+      ch->v++;
+
+      /* add e to line */
+      dlnode_add(pe, 0, 1, e);
       pe = e;
     }
     /* next */

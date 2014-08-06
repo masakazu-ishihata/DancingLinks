@@ -1,6 +1,6 @@
 # Makefile
 TAR = test
-CC = gcc -O6 -Wall
+CC = gcc #-O6 -Wall
 L = -lm
 OBJS = main.o dancinglinks.o algorithmx.o
 SHAD = -fPIC -shared

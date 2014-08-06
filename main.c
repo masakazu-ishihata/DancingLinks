@@ -2,31 +2,28 @@
 
 int main(void)
 {
-  dlmatrix *m;
-  dlnode *n;
-  int v[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  int n, m, i, j;
+  int **A;
+  algx *a;
 
-  m = dlmatrix_new(10);
-  dlmatrix_show(stdout, m);
+  /* load matrix */
+  scanf("%d %d\n", &n, &m);
+  A = (int **)malloc(m * sizeof(int *));
+  for(i=0; i<m; i++){
+    A[i] = (int *)malloc(n * sizeof(int));
+    for(j=0; j<n; j++){
+      scanf("%d", &A[i][j]);
+    }
+  }
 
-  v[0] = 1;
-  dlmatrix_add(m, v);
+  /* Algorithm X */
+  a = algx_new(n, m, A);
+  algx_show(stdout, a);
+  algx_solve(a);
 
-  v[1] = 1;
-  dlmatrix_add(m, v);
-
-  v[2] = 1;
-  dlmatrix_add(m, v);
-
-  n = (m->h)->l[0][1];
-  dlnode_remove(n, 0);
-  dlmatrix_show(stdout, m);
-
-  dlnode_restore(n, 0);
-  dlmatrix_show(stdout, m);
-
-
-  dlmatrix_free(m);
+  /* free */
+  free(A);
+  algx_free(a);
 
   return 0;
 }

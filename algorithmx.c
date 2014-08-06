@@ -14,7 +14,7 @@ algx *algx_new(int _n, int _m, int **_A)
     dlmatrix_add(_a->m, _A[i]);
 
   /* solution */
-  _a->o = (dlnode **)malloc(MAX * sizeof(dlnode *));
+  _a->o = (dlnode **)malloc(_n * sizeof(dlnode *));
   for(i=0; i<_n; i++)
     _a->o[i] = NULL;
 
@@ -57,7 +57,7 @@ int algx_search(algx *_a, int _k)
 
   /* solution */
   if(c == m->h){
-    for(i=0; i<_k; i++) printf(" L%d", N(_a->o[i]));
+    for(i=0; i<_k; i++) printf(" %d", N(_a->o[i]));
     printf("\n");
     return 0;
   }

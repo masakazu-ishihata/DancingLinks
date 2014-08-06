@@ -18,7 +18,6 @@ int main(void)
 
   /* Algorithm X */
   a = algx_new(n, m, A);
-  algx_show(stdout, a);
   algx_solve(a);
 
   /* free */

@@ -4,7 +4,7 @@ int main(void)
 {
   int n, m, i, j;
   int **A;
-  algx *a;
+  ecp *p;
 
   /* load matrix */
   scanf("%d %d\n", &n, &m);
@@ -17,12 +17,13 @@ int main(void)
   }
 
   /* Algorithm X */
-  a = algx_new(n, m, A);
-  algx_solve(a);
+  p = ecp_new(n, m, A);
+  ecp_solve(p, 10);
+  ecp_show(stdout, p);
 
   /* free */
   free(A);
-  algx_free(a);
+  ecp_free(p);
 
   return 0;
 }

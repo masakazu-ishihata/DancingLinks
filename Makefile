@@ -1,8 +1,8 @@
 # Makefile
-TAR = algx
+TAR = ecp
 CC = gcc #-O6 -Wall
 L = -lm
-OBJS = main.o dancinglinks.o algorithmx.o
+OBJS = main.o dancinglinks.o algorithmx.o sudoku.o
 SHAD = -fPIC -shared
 LIB = libikax.so
 
@@ -17,3 +17,4 @@ clean:
 main.o: main.h dancinglinks.o
 dancinglinks.o: dancinglinks.h
 algorithmx.o: algorithmx.h dancinglinks.o
+sudoku.o: sudoku.h algorithmx.h

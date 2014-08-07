@@ -9,20 +9,27 @@
 /*------------------------------------*/
 /* Knuth's Algorithm X */
 /*------------------------------------*/
-typedef struct ALGX
+typedef struct ECP
 {
   /* problem */
   dlmatrix *m;
 
+  /* for search */
+  dlnode **o; /* current solution */
+
   /* solution */
-  dlnode **o;
-} algx;
+  int ns;     /* # solutions */
+  int ms;     /* max # solutions */
+  int **ss;   /* all solutions */
+} ecp;
 /* new / free */
-algx *algx_new(int _n, int _m, int **_A);
-void algx_free(algx *_a);
-void algx_show(FILE *_fp, algx *_a);
+ecp *ecp_new(int _n, int _m, int **_A);
+void ecp_free(ecp *_a);
+void ecp_show(FILE *_fp, ecp *_a);
+void ecp_show_problem(FILE *_fp, ecp *_a);
+void ecp_show_solution(FILE *_fp, ecp *_a);
 /* solve */
-int algx_solve(algx *_a);
-int algx_search(algx *_a, int _k);
+int ecp_solve(ecp *_a, int _max);
+int ecp_search(ecp *_a, int _k);
 
 #endif

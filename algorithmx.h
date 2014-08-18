@@ -23,7 +23,7 @@ typedef struct ECP
   int **ss;   /* all solutions */
 } ecp;
 /* new / free */
-ecp *ecp_new(int _n, int _m, int **_A);
+ecp *ecp_new(int _nbit, int _nline, int **_A);
 void ecp_free(ecp *_a);
 void ecp_show(FILE *_fp, ecp *_a);
 void ecp_show_problem(FILE *_fp, ecp *_a);
@@ -31,5 +31,6 @@ void ecp_show_solution(FILE *_fp, ecp *_a);
 /* solve */
 int ecp_solve(ecp *_a, int _max);
 int ecp_search(ecp *_a, int _k);
+int *ecp_solution(ecp *_a, int _i);
 
 #endif

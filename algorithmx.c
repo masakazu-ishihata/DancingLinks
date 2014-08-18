@@ -122,3 +122,7 @@ int ecp_search(ecp *_a, int _k)
 
   return 0;
 }
+int *ecp_solution(ecp *_a, int _i)
+{
+  return _i < _a->ns ? _a->ss[_i] : NULL;
+}

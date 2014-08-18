@@ -6,24 +6,18 @@ int main(void)
   int **A;
   ecp *p;
 
-  /* load matrix */
-  scanf("%d %d\n", &n, &m);
-  A = (int **)malloc(m * sizeof(int *));
-  for(i=0; i<m; i++){
-    A[i] = (int *)malloc(n * sizeof(int));
-    for(j=0; j<n; j++){
-      scanf("%d", &A[i][j]);
-    }
-  }
+  /* load problem */
+  printf("\nProblem\n");
+  sudoku *s = sudoku_new(stdin);
+  sudoku_show_problem(stdout, s);
 
-  /* Algorithm X */
-  p = ecp_new(n, m, A);
-  ecp_solve(p, 10);
-  ecp_show(stdout, p);
+  /* solve */
+  printf("\nAnswer\n");
+  sudoku_solve(s);
+  sudoku_show_answer(stdout, s);
 
   /* free */
-  free(A);
-  ecp_free(p);
+  sudoku_free(s);
 
   return 0;
 }

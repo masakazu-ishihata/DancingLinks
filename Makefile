@@ -1,5 +1,5 @@
 # Makefile
-TAR = ecp
+TAR = sudoku
 CC = gcc #-O6 -Wall
 L = -lm
 OBJS = main.o dancinglinks.o algorithmx.o sudoku.o

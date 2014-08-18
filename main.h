@@ -6,5 +6,6 @@
 #include <string.h>
 #include "dancinglinks.h"
 #include "algorithmx.h"
+#include "sudoku.h"
 
 #endif
